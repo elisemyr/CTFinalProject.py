@@ -1,3 +1,26 @@
+def draw_board():
+    turtle.pencolor('light gray') #change the color of the ink of the turtle drawing, which is hidden then it is the color of the boxes of the tic tac toe
+    turtle.pensize(10) #change the thickness of the lines that the turtle draws
+    turtle.up() #lift the pen (stop drawing)
+    turtle.goto(-3, -1) #move the turtle to the specified coordinates (-3, -1)
+    turtle.seth(0) #set the orientation of the turtle to 0 degrees (facing right)
+    turtle.down() #lower the pen (start drawing)
+    turtle.forward(6) #move the turtle forward by 6 units, drawing a horizontal line
+    turtle.up() #lift the pen (stop drawing)
+    turtle.goto(-3, 1) #move the turtle to the specified coordinates (-3, -1)
+    turtle.seth(0) #set the orientation of the turtle to 0 degrees (facing right)
+    turtle.down() #lower the pen (start drawing)
+    turtle.fd(6) #move the turtle forward by 6 units, drawing another horizontal line
+    turtle.up() #lift the pen (stop drawing)
+    turtle.goto(-1, -3) #move the turtle to the specified coordinates (-3, -1)
+    turtle.seth(90) #set the orientation of the turtle to 90 degrees (facing upward)
+    turtle.down() #lower the pen (start drawing)
+    turtle.fd(6)#move the turtle forward by 6 units, drawing another horizontal line
+    turtle.up()#lift the pen (stop drawing)
+    turtle.goto(1, -3)#move the turtle to the specified coordinates (-3, -1)
+    turtle.seth(90) #set the orientation of the turtle to 0 degrees (facing right)
+    turtle.down()#lower the pen (start drawing)
+    turtle.fd(6)#move the turtle forward by 6 units, drawing another horizontal line
 def draw_x(x, y):
     turtle.color('light blue') #set the color of the pen to light blue
     turtle.up()#lift the pen (stop drawing)
@@ -28,4 +51,10 @@ def play(x, y): #function to handle player moves when a click occurs on the turt
         display_message("Game over! O won!")
     elif r == 3:
         display_message("This is a Tie!")
+
+b = [[0, 0, 0], [0, 0, 0], [0, 0, 0]] #initialize the tic-tac-toe board with empty cells
+draw(b) #draw the initial state of the board
+turn = 'x' #set the initial player turn to 'x'
+screen.onclick(play) #set up an event listener for mouse clicks on the turtle graphics screen
+turtle.mainloop() #start the main event loop to listen for user input and update the screen
 
