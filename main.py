@@ -21,6 +21,8 @@ def draw_board():
     turtle.seth(90) #set the orientation of the turtle to 0 degrees (facing right)
     turtle.down()#lower the pen (start drawing)
     turtle.fd(6)#move the turtle forward by 6 units, drawing another horizontal line
+
+
 def draw_x(x, y):
     turtle.color('light blue') #set the color of the pen to light blue
     turtle.up()#lift the pen (stop drawing)
