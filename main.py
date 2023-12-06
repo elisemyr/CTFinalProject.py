@@ -1,3 +1,14 @@
+import turtle #importing the turtle module for graphics
+
+#set up the turtle screen
+screen = turtle.Screen() #create a turtle graphics screen
+screen.setup(864, 864) #set up the dimensions of the screen (width: 864 pixels, height: 864 pixels)
+screen.title("Tic Tac Toe @ 2 Players") #set the title of the turtle graphics window
+screen.setworldcoordinates(-5, -5, 5, 5) ## Set the world coordinates for the turtle graphics screen, the visible area will be from (-5, -5) to (5, 5) with the center at (0, 0)
+screen.bgpic("gradsquare.gif") #set background image
+screen.tracer(0, 0) #turn off automatic screen updates
+turtle.hideturtle() #hide the default turtle cursor
+
 def draw_board():
     turtle.pencolor('light gray') #change the color of the ink of the turtle drawing, which is hidden then it is the color of the boxes of the tic tac toe
     turtle.pensize(10) #change the thickness of the lines that the turtle draws
@@ -35,6 +46,21 @@ def draw_x(x, y):
     turtle.goto(x + 0.75, y - 0.75)#move the turtle to the specified coordinates (x + 0.75, y - 0.75)
 
 
+def draw_piece(i, j, p): #function to draw a game piece on the tic-tac-toe board at position (i, j) with player type p
+    if p == 0: return #check if the piece is empty (p == 0), if so, return without drawing
+    x, y = 2 * (j - 1), -2 * (i - 1) #calculate the coordinates (x, y) based on the board position (i, j)
+    if p == 1: #if the player type is 1, draw an 'X' at the calculated coordinates
+        draw_x(x, y)
+    else:#if the player type is 2, draw a circle at the calculated coordinates
+        draw_circle(x, y)
+
+def display_message(message):  
+    # Display the message in the center of the new window
+    turtle.penup() #lift the pen (stop drawing)
+    turtle.goto(0, 0) #move the turtle to the center of the window (coordinates 0, 0)
+    turtle.pendown() #lower the pen (start drawing)
+    turtle.color('black') #set the pen color to black
+    turtle.write(message, align="center", font=("Courier New", 50, "normal")) #write the message on the screen with specified alignment and font
 
 def play(x, y): #function to handle player moves when a click occurs on the turtle graphics screen
     global turn #use the global variable 'turn' to keep track of the current player
