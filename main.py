@@ -75,10 +75,13 @@ def play(x, y): #function to handle player moves when a click occurs on the turt
     r = gameover(b) #check if the game is over
     if r == 1:
         display_message("Game over! X won!")  #display a message based on the game result
+        turtle.ontimer(turtle.bye, 2000) #exits the turtle screen after 2 seconds 
     elif r == 2:
         display_message("Game over! O won!")
+        turtle.ontimer(turtle.bye, 2000)
     elif r == 3:
         display_message("This is a Tie!")
+        turtle.ontimer(turtle.bye, 2000)
 
 b = [[0, 0, 0], [0, 0, 0], [0, 0, 0]] #initialize the tic-tac-toe board with empty cells
 draw(b) #draw the initial state of the board
