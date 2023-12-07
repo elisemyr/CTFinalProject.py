@@ -33,6 +33,14 @@ def draw_board():
     turtle.down()#lower the pen (start drawing)
     turtle.fd(6)#move the turtle forward by 6 units, drawing another horizontal line
 
+def draw_circle(x, y):
+    turtle.up() #lift the pen (stop drawing)
+    turtle.goto(x, y - 0.75) #move the turtle to the specified coordinates (x, y - 0.75)
+    turtle.seth(0) #set the orientation of the turtle to 0 degrees (facing right)
+    turtle.pencolor('magenta') #change the color of the ink of the turtle drawing ( the O circle from tic tac toe game)
+    turtle.down() #lower the pen (start drawing)
+    turtle.circle(0.75, steps=100) #draw a circle with a radius of 0.75 units, using 100 steps for a smoother circle
+
 
 def draw_x(x, y):
     turtle.color('light blue') #set the color of the pen to light blue
@@ -53,6 +61,35 @@ def draw_piece(i, j, p): #function to draw a game piece on the tic-tac-toe board
         draw_x(x, y)
     else:#if the player type is 2, draw a circle at the calculated coordinates
         draw_circle(x, y)
+def draw(b): #function to draw the entire tic-tac-toe board based on the current state (b)
+    draw_board() #draw the tic-tac-toe board
+    for i in range(3): #iterate through each cell in the board
+        for j in range(3):
+            draw_piece(i, j, b[i][j]) #draw the piece at the current cell based on the player type in the board state (b)
+    screen.update() #update the screen to display the changes
+
+# return 1 if player 1 wins, 2 if player 2 wins, 3 if tie, 0 if game is not over
+def gameover(b): #function to check if the game is over and return the result
+    #row checks
+    if b[0][0] > 0 and b[0][0] == b[0][1] and b[0][1] == b[0][2]: return b[0][0]
+    if b[1][0] > 0 and b[1][0] == b[1][1] and b[1][1] == b[1][2]: return b[1][0]
+    if b[2][0] > 0 and b[2][0] == b[2][1] and b[2][1] == b[2][2]: return b[2][0]
+     #column checks   
+    if b[0][0] > 0 and b[0][0] == b[1][0] and b[1][0] == b[2][0]: return b[0][0]
+    if b[0][1] > 0 and b[0][1] == b[1][1] and b[1][1] == b[2][1]: return b[0][1]
+    if b[0][2] > 0 and b[0][2] == b[1][2] and b[1][2] == b[2][2]: return b[0][2]
+    #diagonal checks
+    if b[0][0] > 0 and b[0][0] == b[1][1] and b[1][1] == b[2][2]: return b[0][0]
+    if b[2][0] > 0 and b[2][0] == b[1][1] and b[1][1] == b[0][2]: return b[2][0]
+    #check for a tie (all cells filled)
+    p = 0
+    for i in range(3):
+        for j in range(3):
+            p += (1 if b[i][j] > 0 else 0)
+    if p == 9:
+        return 3 #tie
+    else:
+        return 0 #if no win or tie, return 0 (game not over)
 
 def display_message(message):  
     # Display the message in the center of the new window
