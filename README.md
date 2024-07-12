@@ -1,6 +1,6 @@
 # 🎮 Tic-Tac-Toe @ 2 Players
 
-### 📅 July 2024
+### 📅 Computational Thinking - December 2023
 
 Tic-Tac-Toe @ 2 Players is a Python application that allows two players to play the classic Tic-Tac-Toe game using a graphical interface provided by the Turtle library.
 
